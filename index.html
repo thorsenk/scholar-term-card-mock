@@ -1,1 +1,269 @@
-placeholder
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Learning Center — Term Card Mock</title>
+<style>
+  :root {
+    --bg: #0f1115;
+    --card: #171a21;
+    --card-2: #1c212b;
+    --ink: #e8eaef;
+    --muted: #9aa3b2;
+    --line: #2a3140;
+    --accent: #7aa2ff;
+    --accent-soft: rgba(122, 162, 255, 0.14);
+    --ok: #6bcf8e;
+    --draft: #e0b35a;
+    --radius: 18px;
+    --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: var(--font);
+    background:
+      radial-gradient(900px 400px at 10% -10%, #1a2744 0%, transparent 55%),
+      radial-gradient(700px 360px at 100% 0%, #1b2a22 0%, transparent 50%),
+      var(--bg);
+    color: var(--ink);
+    padding: 28px 16px 48px;
+  }
+  .wrap { max-width: 420px; margin: 0 auto; }
+  .label {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .hint {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0 0 18px;
+    line-height: 1.4;
+  }
+  .card {
+    background: linear-gradient(180deg, var(--card-2), var(--card));
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 18px 50px rgba(0,0,0,0.35);
+  }
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--line);
+  }
+  .pill {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--accent);
+  }
+  .status {
+    font-size: 11px;
+    color: var(--draft);
+    font-weight: 600;
+  }
+  .face {
+    padding: 22px 18px 18px;
+    min-height: 210px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  h1 {
+    margin: 0;
+    font-size: 28px;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+  }
+  .one-liner {
+    margin: 0;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.45;
+  }
+  .why {
+    margin-top: auto;
+    padding-top: 8px;
+    font-size: 14px;
+    line-height: 1.45;
+  }
+  .why strong { color: var(--ink); font-weight: 600; }
+  .actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 0 16px 16px;
+  }
+  button {
+    appearance: none;
+    border: 1px solid var(--line);
+    background: #12151c;
+    color: var(--ink);
+    border-radius: 12px;
+    padding: 12px 10px;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  button:hover { border-color: #3a455a; }
+  button.primary {
+    background: var(--accent);
+    border-color: transparent;
+    color: #0b1020;
+  }
+  .panel {
+    display: none;
+    padding: 0 18px 18px;
+    border-top: 1px solid var(--line);
+  }
+  .panel.open { display: block; }
+  .panel h2 {
+    margin: 14px 0 8px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .panel p, .panel li {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  .panel ul { margin: 0; padding-left: 18px; }
+  .panel li + li { margin-top: 6px; }
+  .links a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 14px;
+  }
+  .md {
+    margin-top: 28px;
+    background: #12151c;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 14px;
+  }
+  .md h3 {
+    margin: 0 0 10px;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  pre {
+    margin: 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-size: 11.5px;
+    line-height: 1.45;
+    color: #c9d0db;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="label">Learning Center · Term Card Mock</div>
+    <p class="hint">Tap Flip / Deeper. Markdown below is the Athena source shape.</p>
+
+    <article class="card" id="card">
+      <div class="top">
+        <span class="pill">Term</span>
+        <span class="status">draft</span>
+      </div>
+      <div class="face" id="face">
+        <h1>Socratic</h1>
+        <p class="one-liner">Learning by questioning — not by being handed the answer.</p>
+        <p class="why"><strong>Why it matters:</strong> turns “something’s off” into questions the work has to answer.</p>
+      </div>
+      <div class="actions">
+        <button type="button" id="btnFlip">Flip</button>
+        <button type="button" class="primary" id="btnDeep">Deeper</button>
+      </div>
+      <div class="panel" id="flipPanel">
+        <h2>In one breath</h2>
+        <p>Named after Socrates. Ask pointed questions until a confident claim gets clearer — or falls apart.</p>
+        <h2>Not</h2>
+        <ul>
+          <li>Gotcha theater</li>
+          <li>A lecture with a question mark glued on</li>
+        </ul>
+      </div>
+      <div class="panel" id="deepPanel">
+        <h2>Product critique use</h2>
+        <ul>
+          <li>Clarify the claimed job</li>
+          <li>Expose the bet (who / what they know)</li>
+          <li>Stress-test (rushed, new, angry, mobile)</li>
+          <li>Name the tension</li>
+        </ul>
+        <h2>Links</h2>
+        <p class="links"><a href="#">paths/socratic-product-critique.md</a> · <a href="#">concepts/product-critique.md</a></p>
+      </div>
+    </article>
+
+    <div class="md">
+      <h3>Athena markdown source (proposed)</h3>
+      <pre>---
+type: Term
+title: Socratic
+description: Learning by questioning — not by being handed the answer.
+tags: [learning, critique, method]
+status: draft
+generated: { by: scholar/1.0, at: 2026-09-12T16:40:00Z }
+---
+
+# Summary
+Learning by questioning — not by being handed the answer.
+
+# Why it matters
+Turns “something’s off” into questions the work has to answer.
+
+# In one breath
+Named after Socrates. Ask pointed questions until a confident claim gets clearer — or falls apart.
+
+# Not
+* Gotcha theater
+* A lecture with a question mark glued on
+
+# Product critique use
+* Clarify the claimed job
+* Expose the bet
+* Stress-test
+* Name the tension
+
+# Links
+* [Socratic → product critique path](../paths/socratic-product-critique.md)
+* [Product critique](../concepts/product-critique.md)</pre>
+    </div>
+  </div>
+<script>
+  const flipPanel = document.getElementById('flipPanel');
+  const deepPanel = document.getElementById('deepPanel');
+  document.getElementById('btnFlip').onclick = () => {
+    const open = flipPanel.classList.toggle('open');
+    if (open) deepPanel.classList.remove('open');
+  };
+  document.getElementById('btnDeep').onclick = () => {
+    const open = deepPanel.classList.toggle('open');
+    if (open) flipPanel.classList.remove('open');
+  };
+</script>
+</body>
+</html>
